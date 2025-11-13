@@ -1,0 +1,28 @@
+{
+  "name": "@medusa-codee/docs",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next --turbopack",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "next": "^16.0.2",
+    "nextra": "^4.6.0",
+    "nextra-theme-docs": "^4.6.0",
+    "postcss": "^8.5.6",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.17"
+  },
+  "packageManager": "yarn@3.2.3+sha512.f26f951f67de0c6a33ee381e5ff364709c87e70eb5e65c694e4facde3512f1fa80b8679e6ba31ce7d340fbb46f08dd683af9457e240f25a204be7427940d767e",
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.4",
+    "typescript": "^5.9.3"
+  }
+}
