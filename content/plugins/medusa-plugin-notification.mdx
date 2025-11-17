@@ -1,0 +1,85 @@
+# @codee-sh/medusa-plugin-notification
+
+A comprehensive notification plugin for Medusa v2 that provides a flexible email template system with internationalization support, custom translations, and seamless integration with Medusa's notification module.
+
+**Repository:** [codee-sh/medusa-plugin-notifications](https://github.com/codee-sh/medusa-plugin-notifications)
+
+## Features
+
+- **Email Templates** - Pre-built, customizable email templates for common use cases
+- **Internationalization** - Built-in support for multiple locales (Polish, English)
+- **Customizable** - Override translations and customize templates without modifying core files
+- **Integration** - Integrates with Medusa's notification module
+- **Admin Panel** - Preview and test templates directly from Medusa Admin
+- **Type-Safe** - Full TypeScript support with exported types
+
+## Compatibility
+
+- **Medusa Version**: `>= 2.8.8`
+- **Node Version**: `>= 20`
+
+## Installation
+
+```bash
+npm install @codee-sh/medusa-plugin-notification
+# or
+yarn add @codee-sh/medusa-plugin-notification
+```
+
+## Quick Start
+
+### 1. Register the Plugin
+
+Add to your `medusa-config.ts`:
+
+```typescript
+module.exports = defineConfig({
+  plugins: [
+    "@codee-sh/medusa-plugin-notification"
+  ]
+})
+```
+
+### 2. Configure Notification Provider
+
+Set up a notification provider - see [Configuration Documentation](https://github.com/codee-sh/medusa-plugin-notifications) for details.
+
+### 3. Use Templates
+
+The plugin includes a built-in subscriber for `order.placed` events. You can also use templates in your code:
+
+```typescript
+import { renderTemplate, TEMPLATES_NAMES } from "@codee-sh/medusa-plugin-notification/templates/emails"
+
+const { html, text } = renderTemplate(
+  TEMPLATES_NAMES.ORDER_PLACED,
+  templateData,
+  { locale: "pl" }
+)
+```
+
+## Available Templates
+
+- **Order Placed** (`order-placed`) - Order confirmation email template
+- **Contact Form** (`contact-form`) - Contact form submission email template
+
+## Documentation
+
+For complete documentation, including detailed usage examples, configuration options, translations, and admin panel usage, visit the [GitHub repository](https://github.com/codee-sh/medusa-plugin-notifications).
+
+## Exports
+
+The plugin exports the following:
+
+- `@codee-sh/medusa-plugin-notification/templates/emails` - Template rendering functions
+- `@codee-sh/medusa-plugin-notification/templates/emails/types` - Template types and constants
+- `@codee-sh/medusa-plugin-notification/utils` - Utility functions
+
+## License
+
+MIT
+
+## Author
+
+Codee Team - [https://codee.dev](https://codee.dev)
+
