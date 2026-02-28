@@ -1,0 +1,215 @@
+# How to create automation?
+
+Running a Medusa store means recurring daily routines: monitoring inventory, reacting to order changes, or sending notifications. Automation simplifies that so your store responds instantly, without delays or team involvement.  
+In this article, we will show how, thanks to our [Medusa Plugin Automations](https://github.com/codee-sh/medusa-plugin-automations) plugin, you can turn manual actions into simple rules that run automatically, without writing code, directly from the admin panel.
+
+In this article, you will learn:
+
+- how automation works in [Medusa Plugin Automations](https://github.com/codee-sh/medusa-plugin-automations)  
+- what you can automate  
+- how to create your first automation step by step
+
+## **1\. Introduction**
+
+Do you run a store and manually check inventory every day? Do you send email notifications about low stock levels? Or do you perform any other tasks that happen as a consequence of store events?
+
+Tasks that were previously done manually can be replaced with automated events. With the right configuration, you can eliminate repetitive work and save time. What is more, automation allows you to build an entire ecosystem that responds consistently and predictably, increasing security and reducing errors.
+
+The [Medusa Plugin Automations](https://github.com/codee-sh/medusa-plugin-automations) plugin lets you create automation rules directly from the admin panel without writing additional code. You simply choose a trigger, define conditions, and set actions.
+
+**Placeholder for screenshot \#1**  
+Automation list view in the admin panel
+
+## **2\. How does it work? The three pillars of automation**
+
+Automation is built on a simple, repeatable pattern that gives you control over when and why something happens in your store. Automation instructions are constructed from three logical elements.
+
+### **2.1. Triggers**
+
+Triggers are the starting point of every automation. They define what causes the automation to run.  
+In the system, triggers are divided into three types:
+
+- event  
+- schedule  
+- manual
+
+#### 2.1.1 Events
+
+An event is a signal that something has changed in your store. When an event occurs, the system checks whether there are automations that should react to it.  
+Supported events include:
+
+- Inventory \- stock level changes, inventory item changes  
+- Products \- product edits, variant, tag, category, or type changes  
+- Orders \- new order, status change, completion, cancellation  
+- And much more \- payments, carts, customers, regions, fulfillment (the plugin extends the list with events from all major Medusa modules)
+
+You choose events from a dropdown list grouped by category.
+
+#### 
+
+#### 2.1.2 Schedule
+
+A schedule lets you run automations on a recurring basis, according to a defined time plan, regardless of system events.  
+This trigger type is useful whenever a process should run regularly, for example:
+
+- daily  
+- at a specific hour  
+- weekly or monthly
+
+The schedule is configured by selecting a run frequency defined in seconds, so the automation runs fully autonomously.
+
+#### 2.1.3 Manual
+
+A manual trigger allows you to run an automation on demand, at any time, by the user. These automations do not start on their own and must be activated manually in the interface.
+
+Manual triggers give you full control over when an automation runs and are ideal where automatic execution is not desired.
+
+**Placeholder for screenshot or gif \#2**  
+Selecting an event, or showing how different trigger types reveal different fields, etc.
+
+### **2.2. Conditions (Rules)**
+
+Conditions уточniają, when exactly the automation should run. They filter events and react only to situations that meet specific criteria.  
+Each condition consists of three elements:
+
+- Attribute \- what we check, e.g. order status, product stock quantity  
+- Operator \- how we compare, e.g. less than, equal, contains  
+- Value \- what we compare against, e.g. number 10, status 'completed', currency
+
+All conditions must be met at the same time for the automation to run. This allows very precise rules.
+
+**Placeholder for screenshot \#3**  
+Rules editing, ideally two on screen \+ different operators
+
+### 
+
+### **2.3. Actions**
+
+Actions define what happens when the automation runs and all conditions are met. This can be sending an email, a Slack message, or running custom logic. One automation can execute multiple actions in parallel.  
+Actions supported by the plugin:
+
+- email \- send an email notification to a specified address with configurable subject, content, and template  
+- slack \- send a message to a Slack channel via webhook  
+- custom \- extend the system with your own action types (for advanced users)
+
+**Placeholder for screenshot \#4**  
+Actions editing, ideally with several visible
+
+# **First automation**
+
+**Short intro?**
+
+### **3.1. Step 1: Open the automation panel**
+
+In the Medusa admin panel, go to List of automations. You will see your automation list (initially empty). Click the plus button in the top right.
+
+**Placeholder for screenshot \#5 ideally a gif**  
+Panel screen before click or moving the mouse \+ click and modal opening
+
+### **3.2. Step 2: Fill in basic details**
+
+The new automation form will open. Fill in:
+
+- Name \- give a name that clearly describes what the automation does  
+- Description \- optional description for you and your team  
+- Trigger Type \- choose Event  
+- Active \- choose whether the automation should be active immediately  
+- Event Name \- select an event from the list
+
+Depending on the selected Trigger Type, also fill in:
+
+- Throttle \- anti-spam protection for event triggers \- in seconds, limits how often the automation can run for that event  
+- Interval \- for schedule triggers \- in seconds, defines how often the automation should run
+
+Click “Save automation” to save changes.
+
+**Placeholder for screenshot \#6 ideally a gif**  
+Modal screen \- filling fields and clicking save, or gif of filling + saving and closing
+
+### 
+
+### **3.3. Step 3: Define conditions (Rules)**
+
+After saving the automation, open it for editing from the list view. You will see three tabs: General, Rules, Actions.
+
+Go to the Rules tab and click “Add condition”.  
+For each rule, fill in:
+
+- Attribute \- choose from the dropdown list. The list is contextual and shows attributes appropriate for the selected event. Each attribute shows a description and example values, which helps configuration.  
+- Operator \- choose an operator, e.g. “Greater Than”  
+- Value \- enter the value to compare against, e.g. number 10
+
+You can add multiple rules. This makes the automation more precise.
+
+**Placeholder for screenshot \#7 ideally a gif**  
+Rules modal \- filling rules and clicking save, or gif showing save and moving to actions
+
+**3.4. Step 4: Configure actions**
+
+Go to the Actions tab and click “Add Item”.  
+Select an action type and fill in the details:
+
+- Email \- configure recipient address, subject, body, optional BCC, CC, template  
+- Slack \- choose a Slack message template
+
+You can add multiple actions, e.g. email and Slack together.
+
+Actions like Email and Slack use message templates. By default, basic templates are available, but in practice, especially in more advanced scenarios, there is often a need for full control over communication content.
+
+That is why a second plugin, Medusa plugin notification, is available. It allows you to create and manage your own templates used in automations.
+
+**Placeholder for screenshot \#8 ideally a gif**  
+Actions modal \- filling actions and clicking save, or gif showing save and closing
+
+### **3.5. Step 5: Save and activate**
+
+Click “Save automation”. If your automation has been activated by selecting “Active”, it will start running immediately when the relevant event occurs.
+
+The automation list shows all created automations. You can quickly review and analyze key information such as whether an automation is active, when it last ran, and when it was last modified.
+
+**Placeholder for screenshot \#9**   
+List view screen \- a static screenshot should be enough
+
+## **4\. Practical automation examples**
+
+### **4.1. Example 1: Low inventory notification**
+
+Problem: You want to know when a product's available stock drops below 10 units so you can reorder in time.
+
+Configuration:
+
+- Event: Inventory Level Updated  
+- Condition: available\_quantity \-\> Less Than \-\> 10  
+- Action: Email to magazyn@twojsklep.pl with subject “Low inventory”
+
+Result: Every time product stock drops below 10, the system automatically sends an email to the warehouse team.
+
+### **4.2. Example 2: New order Slack notification**
+
+Problem: The sales team wants real-time notifications about new orders.
+
+Configuration:
+
+- Event: Order Placed  
+- Condition: none (every order)  
+- Action: Slack using the notification template
+
+Result: When a new order is placed, the system automatically sends a Slack message to the team.
+
+### **4.3. Example 3: Premium products notification**
+
+Problem: You want to react only to changes for products tagged in a specific way.
+
+Configuration:
+
+- Event: Product Updated  
+- Condition 1: tags.value → In → \[premium, featured\]  
+- Condition 2: status → Equal → published  
+- Action: Email to the product manager
+
+Result: Only published products tagged “premium” or “featured” trigger notifications. Other changes are ignored.
+
+##  **5\. Summary**
+
+[Medusa Plugin Automations](https://github.com/codee-sh/medusa-plugin-automations) is a tool that turns manual, repetitive tasks into automated processes. Instead of checking inventory, monitoring orders, and reacting to changes every day, you let the system do it for you. Install it, configure your first automation, and see how much time you can save.
+
