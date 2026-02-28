@@ -13,3 +13,4 @@ node_modules
 .nextra-cache
 .nextra-dist
 .nextra-static
+_pagefind/
