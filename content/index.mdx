@@ -1,8 +1,71 @@
+---
+title: Codee Documentation
+sidebarTitle: Home
+---
+
+import { Callout, Cards } from 'nextra/components'
+
 # Codee Documentation
 
-Choose a documentation track:
+A documentation hub for **Codee** projects: Medusa.js extensions (modules/plugins) and OpenMercato components.
 
-- [Medusa.js documentation](/medusajs)
-- [OpenMercato documentation](/openmercato)
+<Callout type="info">
+  If you're implementing a store on Medusa, start with the <b>Medusa.js</b> track.
+</Callout>
 
-If you are not sure where to start, go to the Medusa.js section.
+## Start Here
+
+<Cards num={2} className="mt-6">
+  <Cards.Card
+    title="Medusa.js"
+    href="/medusajs"
+    arrow
+  >
+    <div className="x:px-4 x:pt-4">
+      <p>Modules, plugins, and practical guides for extending Medusa.js (v2).</p>
+    </div>
+  </Cards.Card>
+
+  <Cards.Card
+    title="OpenMercato"
+    href="/openmercato"
+    arrow
+  >
+    <div className="x:px-4 x:pt-4">
+      <p className="m-0 leading-7">OpenMercato modules, plugins, and guides. Work in progress.</p>
+    </div>
+  </Cards.Card>
+</Cards>
+
+## Why This Documentation Exists
+
+This documentation exists to:
+
+- explain how to install, configure, and operate Codee-maintained extensions,
+- keep configuration examples and gotchas in one searchable place,
+- provide pragmatic, implementation-focused guides.
+
+## Who It's For
+
+- Developers building on Medusa.js and related tooling
+- Integrators / agencies implementing client projects
+- Contributors who maintain or extend Codee packages
+
+## Who Maintains It
+
+This documentation is maintained by the **Codee Team**. Source of truth lives in GitHub (issues and pull requests are welcome):
+
+- [github.com/codee-sh](https://github.com/codee-sh)
+
+## How It Will Evolve
+
+- We keep docs aligned with the latest stable releases; pages include compatibility notes when relevant.
+- Missing, outdated, or unclear docs are treated as a bug: report it as an issue or propose a fix via PR.
+- Coverage will expand as we release more modules/plugins and as OpenMercato matures.
+
+## Quick Links
+
+- [Medusa.js overview](/medusajs)
+- [Plugins: Get started](/medusajs/plugins/get-started)
+- [Automations plugin](/medusajs/plugins/automations/get-started)
+- [Notifications plugin](/medusajs/plugins/notifications/get-started)

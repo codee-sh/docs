@@ -5,8 +5,8 @@ import 'nextra-theme-docs/style.css'
 import './globals.css'
  
 export const metadata = {
-  title: 'Medusa Codee - Documentation',
-  description: 'Modules, plugins, and guides for extending Medusa.js',
+  title: 'Codee - Documentation',
+  description: 'Modules, plugins, and guides for Codee projects (Medusa.js extensions and OpenMercato).',
 }
  
 // const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>
