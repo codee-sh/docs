@@ -1,0 +1,125 @@
+---
+title: Astro Medusa Starter
+sidebarTitle: Astro Medusa Starter
+asIndexPage: true
+---
+
+# Astro Medusa Starter
+
+A blazing-fast, open-source ecommerce storefront built with Astro, React, and Medusa v2 — deployed to the edge on Cloudflare Workers.
+
+| Field | Details |
+|-------|---------|
+| **Status** | In Review |
+| **Repository** | [github.com/Bystrol/astro-medusa-starter](https://github.com/Bystrol/astro-medusa-starter) |
+| **Version** | 1.0.0 |
+| **Author** | Michal Bystryk |
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Astro 6 (static HTML with islands of interactivity) |
+| UI | React 19 (interactive components only) |
+| Styling | Tailwind CSS v4 (zero-config Vite plugin) |
+| Backend | Medusa v2 (headless commerce engine) |
+| Payments | Stripe (secure checkout) |
+| State Management | Nanostores (framework-agnostic stores) |
+| Forms | React Hook Form + Zod validation |
+| Deployment | Cloudflare Workers (edge-first) |
+
+## Features
+
+- **Islands Architecture** — static HTML generation with dynamic React islands, eliminating unnecessary JavaScript
+- **Real-Time Stock Verification** — client-side inventory checks prevent stale data
+- **Region-Aware Routing** — middleware-based country detection with regional pricing and shipping
+- **Edge Deployment** — Cloudflare Workers for global low-latency delivery
+- **Persistent Cart** — state managed through Nanostores + localStorage
+- **Webhook Redeployment** — product changes trigger automatic rebuilds
+
+## Compatibility
+
+- **Medusa Version**: `v2`
+- **Node Version**: `>= 18`
+- **Yarn Version**: `4.x`
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/bystrol/astro-medusa-starter.git
+cd astro-medusa-starter/
+yarn
+```
+
+### 2. Configure Environment
+
+```bash
+cp .env.example .env
+```
+
+Edit `.env` with your configuration:
+
+```
+PUBLIC_MEDUSA_BACKEND_URL=http://localhost:9000
+PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_...
+DEFAULT_REGION=us
+PUBLIC_STRIPE_KEY=pk_test_...
+S3_DOMAIN=your-bucket.s3.us-east-1.amazonaws.com
+```
+
+### Prerequisites
+
+- Running Medusa v2 backend
+- Stripe account with API keys
+- (Optional) S3 bucket for product images
+
+### 3. Run Development Server
+
+```bash
+yarn dev
+```
+
+The storefront will be available at `http://localhost:8000`.
+
+### 4. Build for Production
+
+```bash
+yarn build
+yarn preview
+```
+
+## Routes
+
+All routes are country-prefixed for region-aware pricing and shipping:
+
+| Route | Description |
+|-------|-------------|
+| `/:country/` | Landing page |
+| `/:country/store` | Product catalog |
+| `/:country/store/:productId` | Product detail |
+| `/:country/cart` | Shopping cart |
+| `/:country/checkout` | Multi-step checkout |
+| `/:country/order/confirmed` | Order confirmation |
+
+## Project Structure
+
+The project follows a modular architecture under `src/`:
+
+- `components/` — Reusable UI components
+- `modules/` — Feature modules (cart, checkout, layout, order, products)
+- `lib/` — SDK client, stores, utilities
+- `layouts/` — Page layouts
+- `middleware/` — Region detection and routing
+- `loaders/` — Data fetching logic
+- `pages/` — Astro page routes
+
+## License
+
+MIT
+
+## Links
+
+- [GitHub Repository](https://github.com/Bystrol/astro-medusa-starter)
+- [Author's LinkedIn](https://www.linkedin.com/in/michal-bystryk/)
