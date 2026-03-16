@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { readdirSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
-const SITE_URL = 'https://docs.codee.dev'
+const SITE_URL = 'https://medusahub.dev'
 const CONTENT_DIR = join(process.cwd(), 'content')
 
 function walk(dir: string): string[] {
