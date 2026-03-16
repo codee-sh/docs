@@ -6,7 +6,7 @@ import './globals.css'
  
 export const metadata = {
   title: 'Codee - Documentation',
-  description: 'Modules, plugins, and guides for Codee projects (Medusa.js extensions and OpenMercato).',
+  description: 'Modules, plugins, and guides for Codee projects (Medusa.js extensions).',
 }
  
 // const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>
