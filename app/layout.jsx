@@ -33,7 +33,7 @@ const footer = (
       </a>
       {' · '}
       <a 
-        href="https://github.com/codee-sh/medusajs-hub-docs" 
+        href="https://github.com/codee-sh/medusa-hub" 
         target="_blank" 
         rel="noopener noreferrer"
         style={{ color: 'inherit', textDecoration: 'none' }}
