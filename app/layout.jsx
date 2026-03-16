@@ -22,7 +22,7 @@ const currentYear = typeof window === 'undefined' ? new Date().getFullYear() : n
 const footer = (
   <Footer>
     <p>
-      Copyright © {currentYear}{' '}
+      © {currentYear}{' '}
       <a 
         href="https://codee.dev" 
         target="_blank" 
@@ -31,7 +31,15 @@ const footer = (
       >
         Codee
       </a>
-      . All rights reserved.
+      {' · '}
+      <a 
+        href="https://github.com/codee-sh/medusajs-hub-docs" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        style={{ color: 'inherit', textDecoration: 'none' }}
+      >
+        Contribute on GitHub
+      </a>
     </p>
   </Footer>
 )
