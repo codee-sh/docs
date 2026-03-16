@@ -1,0 +1,93 @@
+---
+title: Template
+sidebarTitle: Template
+---
+
+# Template
+
+Use this structure when submitting your plugin. Copy and replace the placeholders with your content. See [Automations](/medusajs/plugins/automations/get-started) or [Notifications](/medusajs/plugins/notifications/get-started) as a reference example.
+
+---
+
+````mdx
+---
+title: Get started
+sidebarTitle: Get started
+---
+
+# [Your Plugin Name]
+
+[One-sentence description of your plugin and what it does.]
+
+| Field | Details |
+|-------|---------|
+| **Status** | In Review |
+| **Repository** | [github.com/owner/repo](https://github.com/owner/repo) |
+| **Version** | <StarterVersion repo="owner/repo" fallback="1.0.0" /> |
+| **Author** | [Author name] |
+
+## Features
+
+- **[Feature name]** — [description]
+- **[Feature name]** — [description]
+
+## Compatibility
+
+- **Medusa Version**: `>= 2.8.8`
+- **Node Version**: `>= 20`
+- [Other requirements]
+
+## Installation
+
+### 1. Install the Package
+
+```bash
+npm install @your-org/your-plugin-name
+# or
+yarn add @your-org/your-plugin-name
+```
+
+### 2. Register the Plugin
+
+Add to your `medusa-config.ts`:
+
+```typescript
+module.exports = defineConfig({
+  plugins: [
+    "@your-org/your-plugin-name"
+    // or with options:
+    // {
+    //   resolve: "@your-org/your-plugin-name",
+    //   options: {},
+    // },
+  ],
+})
+```
+
+### 3. Configure
+
+[Configuration steps]
+
+## Documentation
+
+- [Configuration](https://github.com/owner/repo/blob/main/docs/configuration.md)
+- [Additional docs...]
+
+## License
+
+[License name, e.g. MIT]
+
+## Links
+
+- [GitHub Repository](https://github.com/owner/repo)
+- [npm package](https://www.npmjs.com/package/@your-org/your-plugin-name)
+- [Author contact — LinkedIn, GitHub, etc.]
+````
+
+---
+
+**Notes:**
+
+- Replace `owner/repo` in `StarterVersion` with your repository (e.g. `codee-sh/medusa-plugin-automations`)
+- Add or remove rows in Features as needed
+- Ensure your repo has an official GitHub release for the version to display correctly
