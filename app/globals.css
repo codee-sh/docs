@@ -4,3 +4,17 @@
 @import 'nextra-theme-docs/style.css'; /* or nextra-theme-blog/style.css */
  
 @variant dark (&:where(.dark *));
+
+/* Slightly smaller tables in docs */
+article table,
+main table {
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+article table th,
+article table td,
+main table th,
+main table td {
+  padding: 0.5rem 0.75rem;
+}
