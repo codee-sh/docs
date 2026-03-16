@@ -1,5 +1,5 @@
 export default {
-  "get-started": "Get Started",
-  "available": "Available Starters",
+  "get-started": "Get started",
+  "available": "Available starters",
   "astro-medusa-starter": "Astro Medusa Starter"
 }

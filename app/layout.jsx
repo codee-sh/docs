@@ -5,15 +5,15 @@ import 'nextra-theme-docs/style.css'
 import './globals.css'
  
 export const metadata = {
-  title: 'Codee - Documentation',
-  description: 'Modules, plugins, and guides for Codee projects (Medusa.js extensions).',
+  title: 'Medusa Hub',
+  description: 'Community plugins, starters, and guides extending Medusa.js.',
 }
  
 // const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>
 const navbar = (
   <Navbar
     logo={
-      <b>Codee</b>
+      <b>Medusa Hub</b>
     }
     // ... Your additional navbar options
   />

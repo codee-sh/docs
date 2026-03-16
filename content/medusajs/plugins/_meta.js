@@ -1,6 +1,6 @@
 export default {
-    "get-started": "Get Started",
-    "available": "Available Plugins",
+    "get-started": "Get started",
+    "available": "Available plugins",
     "automations": "Automations",
     "notifications": "Notifications"
   }

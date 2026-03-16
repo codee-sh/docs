@@ -31,9 +31,9 @@ npm install @codee-sh/medusa-plugin-automations
 yarn add @codee-sh/medusa-plugin-automations
 ```
 
-## Quick Start
+## Quick start
 
-### 1. Register the Plugin
+### 1. Register the plugin
 
 Add to your `medusa-config.ts`:
 
@@ -45,7 +45,7 @@ module.exports = defineConfig({
 })
 ```
 
-### 2. Run Migrations
+### 2. Run migrations
 
 The plugin includes database migrations for automation models. Run migrations to set up the required tables:
 
@@ -55,7 +55,7 @@ medusa migrations run
 
 See [Database Migrations](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/configuration.md#database-migrations) for more details about the created tables.
 
-### 3. Access Admin Panel
+### 3. Access admin panel
 
 Navigate to **Notifications > Automations** in your Medusa Admin dashboard, or directly access:
 
@@ -63,9 +63,9 @@ Navigate to **Notifications > Automations** in your Medusa Admin dashboard, or d
 /app/notifications/automations
 ```
 
-## How It Works
+## How it works
 
-### Automation Triggers
+### Automation triggers
 
 Automations are triggered by:
 - **Events**: Medusa events (e.g., `inventory.inventory-level.updated`, `product.updated`)
@@ -74,7 +74,7 @@ Automations are triggered by:
 
 See [Available Subscribers](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/available-subscribers.md) for a complete list of supported events.
 
-### Rules and Conditions
+### Rules and conditions
 
 Each automation can have multiple rules that define when actions should be executed. Rules support primitive fields, relations (arrays), nested objects, and various operators for complex conditions.
 
@@ -97,11 +97,11 @@ See [Actions](https://github.com/codee-sh/medusa-plugin-automations/blob/develop
 Email and Slack templates are rendered by
 `@codee-sh/medusa-plugin-notification-emails`.
 
-## Admin Panel
+## Admin panel
 
-Access the automations management interface in Medusa Admin at `/app/notifications/automations`. See [Admin Panel Documentation](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/admin.md) for details.
+Access the automations management interface in Medusa Admin at `/app/notifications/automations`. See [Admin Panel](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/admin.md) for details.
 
-## Documentation
+## Links
 
 - [Configuration](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/configuration.md) - Plugin configuration options and extending functionality
 - [Admin Panel](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/admin.md) - Admin interface usage and automation management
@@ -117,12 +117,12 @@ The plugin exports the following:
 
 ## Screenshots
 
-### How to edit trigger?
+### How to edit trigger
 ![Automations Admin Panel](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/images/video.gif?raw=1)
 
 *Automations management interface in Medusa Admin*
 
-## Related Plugins
+## Related plugins
 
 For email and Slack template rendering, see [@codee-sh/medusa-plugin-notification-emails](https://github.com/codee-sh/medusa-plugin-notification-emails).
 
@@ -134,7 +134,7 @@ MIT
 
 Codee Team - [https://codee.dev](https://codee.dev)
 
-## See Also
+## See also
 
 - [Configuration](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/configuration.md)
 - [Admin Panel](https://github.com/codee-sh/medusa-plugin-automations/blob/develop/docs/admin.md)
