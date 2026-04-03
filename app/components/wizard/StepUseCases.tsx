@@ -6,12 +6,12 @@ const USE_CASES: { id: UseCase; label: string; description: string }[] = [
   {
     id: "b2c",
     label: "B2C",
-    description: "Sklep dla klientów indywidualnych",
+    description: "Store for individual customers",
   },
   {
     id: "b2b",
     label: "B2B",
-    description: "Platforma dla klientów biznesowych",
+    description: "Platform for business customers",
   },
 ];
 
@@ -32,9 +32,9 @@ export function StepUseCases({ state, onChange }: Props) {
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="text-center">
-        <h2 className="text-2xl font-bold">Jaki sklep chcesz zbudować?</h2>
+        <h2 className="text-2xl font-bold">What kind of store do you want to build?</h2>
         <p className="mt-2 text-gray-500 dark:text-gray-400">
-          Możesz wybrać oba
+          You can choose both
         </p>
       </div>
 

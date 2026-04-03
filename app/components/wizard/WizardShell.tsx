@@ -60,7 +60,7 @@ export function WizardShell() {
       default:
         return (
           <div className="text-center text-gray-400">
-            Krok {step + 1} — wkrótce
+            Step {step + 1} - coming soon
           </div>
         );
     }
