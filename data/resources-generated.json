@@ -1,0 +1,380 @@
+[
+  {
+    "id": "api-key",
+    "name": "API Key Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/api-key",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "auth",
+    "name": "Auth Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/auth",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "cart",
+    "name": "Cart Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/cart",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "currency",
+    "name": "Currency Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/currency",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "customer",
+    "name": "Customer Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/customer",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "fulfillment",
+    "name": "Fulfillment Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/fulfillment",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "inventory",
+    "name": "Inventory Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/inventory",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "order",
+    "name": "Order Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/order",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "payment",
+    "name": "Payment Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/payment",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "pricing",
+    "name": "Pricing Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/pricing",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "product",
+    "name": "Product Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/product",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "promotion",
+    "name": "Promotion Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/promotion",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "region",
+    "name": "Region Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/region",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "sales-channel",
+    "name": "Sales Channel Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/sales-channel",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "stock-location",
+    "name": "Stock Location Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/stock-location",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "store",
+    "name": "Store Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/store",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "tax",
+    "name": "Tax Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/tax",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "translation",
+    "name": "Translation Module",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/translation",
+    "type": "built-in",
+    "author": "medusa",
+    "sourceCategory": "Commerce Modules",
+    "useCases": []
+  },
+  {
+    "id": "posthog",
+    "name": "PostHog",
+    "href": "https://docs.medusajs.com/resources/infrastructure-modules/analytics/posthog",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Analytics"
+  },
+  {
+    "id": "segment",
+    "name": "Segment",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/segment",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Analytics"
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/auth/auth-providers/google",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Auth"
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/auth/auth-providers/github",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Auth"
+  },
+  {
+    "id": "okta",
+    "name": "Okta",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/okta",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Auth"
+  },
+  {
+    "id": "contentful",
+    "name": "Contentful (Localization)",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/contentful",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "CMS"
+  },
+  {
+    "id": "payload",
+    "name": "Payload CMS",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/payload",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "CMS"
+  },
+  {
+    "id": "sanity",
+    "name": "Sanity",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/sanity",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "CMS"
+  },
+  {
+    "id": "strapi",
+    "name": "Strapi",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/strapi",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "CMS"
+  },
+  {
+    "id": "odoo",
+    "name": "Odoo",
+    "href": "https://docs.medusajs.com/resources/recipes/erp/odoo",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "ERP"
+  },
+  {
+    "id": "s3",
+    "name": "AWS S3 (and Compatible APIs)",
+    "href": "https://docs.medusajs.com/resources/infrastructure-modules/file/s3",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "File"
+  },
+  {
+    "id": "shipstation",
+    "name": "ShipStation",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/shipstation",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Fulfillment"
+  },
+  {
+    "id": "sentry",
+    "name": "Sentry",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/sentry",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Instrumentation"
+  },
+  {
+    "id": "magento",
+    "name": "Magento",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/magento",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Migration"
+  },
+  {
+    "id": "sendgrid",
+    "name": "SendGrid",
+    "href": "https://docs.medusajs.com/resources/infrastructure-modules/notification/sendgrid",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Notification"
+  },
+  {
+    "id": "mailchimp",
+    "name": "Mailchimp",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/mailchimp",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Notification"
+  },
+  {
+    "id": "resend",
+    "name": "Resend",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/resend",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Notification"
+  },
+  {
+    "id": "slack",
+    "name": "Slack",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/slack",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Notification"
+  },
+  {
+    "id": "phone-auth#step-3-integrate-twilio-sms",
+    "name": "Twilio SMS",
+    "href": "https://docs.medusajs.com/resources/how-to-tutorials/tutorials/phone-auth#step-3-integrate-twilio-sms",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Notification"
+  },
+  {
+    "id": "stripe",
+    "name": "Stripe",
+    "href": "https://docs.medusajs.com/resources/commerce-modules/payment/payment-provider/stripe",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Payment"
+  },
+  {
+    "id": "paypal",
+    "name": "PayPal",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/paypal",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Payment"
+  },
+  {
+    "id": "algolia",
+    "name": "Algolia",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/algolia",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Search"
+  },
+  {
+    "id": "meilisearch",
+    "name": "Meilisearch",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/meilisearch",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Search"
+  },
+  {
+    "id": "avalara",
+    "name": "Avalara",
+    "href": "https://docs.medusajs.com/resources/integrations/guides/avalara",
+    "type": "guide",
+    "author": "medusa",
+    "useCases": [],
+    "sourceCategory": "Tax"
+  }
+]

@@ -1,0 +1,563 @@
+[
+  {
+    "id": "catalog",
+    "name": "Catalog",
+    "useCases": ["b2c", "b2b"],
+    "description": "Zarządzanie produktami i asortymentem",
+    "children": [
+      {
+        "id": "catalog-products",
+        "name": "Products",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["product"],
+        "children": [
+          {
+            "id": "catalog-products-variants",
+            "name": "Variants",
+            "useCases": ["b2c", "b2b"],
+            "status": "ready",
+            "resourceIds": ["product"]
+          },
+          {
+            "id": "catalog-products-custom-attributes",
+            "name": "Custom Attributes",
+            "useCases": ["b2c", "b2b"],
+            "status": "buildable",
+            "resourceIds": ["product"],
+            "notes": "Wymaga rozszerzenia modelu danych"
+          },
+          {
+            "id": "catalog-products-digital",
+            "name": "Digital Products",
+            "useCases": ["b2c"],
+            "status": "buildable",
+            "resourceIds": [],
+            "notes": "Brak natywnego wsparcia — można zbudować na bazie Product Module"
+          }
+        ]
+      },
+      {
+        "id": "catalog-categories",
+        "name": "Categories",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["product"]
+      },
+      {
+        "id": "catalog-collections",
+        "name": "Collections",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["product"]
+      },
+      {
+        "id": "catalog-inventory",
+        "name": "Inventory",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["inventory", "stock-location"],
+        "children": [
+          {
+            "id": "catalog-inventory-multi-warehouse",
+            "name": "Multi-warehouse",
+            "useCases": ["b2b"],
+            "status": "ready",
+            "resourceIds": ["inventory", "stock-location"]
+          },
+          {
+            "id": "catalog-inventory-reservations",
+            "name": "Reservations",
+            "useCases": ["b2c", "b2b"],
+            "status": "ready",
+            "resourceIds": ["inventory"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pricing",
+    "name": "Pricing",
+    "useCases": ["b2c", "b2b"],
+    "description": "Cenniki, rabaty, waluty",
+    "children": [
+      {
+        "id": "pricing-price-lists",
+        "name": "Price Lists",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["pricing"]
+      },
+      {
+        "id": "pricing-currencies",
+        "name": "Multi-currency",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["currency", "region"]
+      },
+      {
+        "id": "pricing-taxes",
+        "name": "Taxes",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["tax"],
+        "children": [
+          {
+            "id": "pricing-taxes-avalara",
+            "name": "Avalara Integration",
+            "useCases": ["b2c", "b2b"],
+            "status": "plugin",
+            "resourceIds": ["avalara"]
+          }
+        ]
+      },
+      {
+        "id": "pricing-promotions",
+        "name": "Promotions & Discounts",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["promotion"]
+      },
+      {
+        "id": "pricing-b2b-per-company",
+        "name": "Per-company Pricing",
+        "useCases": ["b2b"],
+        "status": "buildable",
+        "resourceIds": ["pricing"],
+        "notes": "Wymaga niestandardowej logiki przypisania cenników do firm"
+      }
+    ]
+  },
+  {
+    "id": "cart-checkout",
+    "name": "Cart & Checkout",
+    "useCases": ["b2c", "b2b"],
+    "description": "Koszyk i proces zakupowy",
+    "children": [
+      {
+        "id": "cart-checkout-cart",
+        "name": "Cart",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["cart"]
+      },
+      {
+        "id": "cart-checkout-guest",
+        "name": "Guest Checkout",
+        "useCases": ["b2c"],
+        "status": "ready",
+        "resourceIds": ["cart"]
+      },
+      {
+        "id": "cart-checkout-multi-step",
+        "name": "Multi-step Checkout",
+        "useCases": ["b2c", "b2b"],
+        "status": "buildable",
+        "resourceIds": ["cart"],
+        "notes": "Logika kroków zdefiniowana po stronie frontendu"
+      },
+      {
+        "id": "cart-checkout-abandoned",
+        "name": "Abandoned Cart Recovery",
+        "useCases": ["b2c"],
+        "status": "buildable",
+        "resourceIds": ["cart"],
+        "notes": "Wymaga własnego mechanizmu schedulera i notyfikacji"
+      }
+    ]
+  },
+  {
+    "id": "payments",
+    "name": "Payments",
+    "useCases": ["b2c", "b2b"],
+    "description": "Integracje płatności",
+    "children": [
+      {
+        "id": "payments-stripe",
+        "name": "Stripe",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["stripe"]
+      },
+      {
+        "id": "payments-paypal",
+        "name": "PayPal",
+        "useCases": ["b2c"],
+        "status": "plugin",
+        "resourceIds": ["paypal"]
+      },
+      {
+        "id": "payments-subscriptions",
+        "name": "Subscriptions",
+        "useCases": ["b2c", "b2b"],
+        "status": "buildable",
+        "resourceIds": ["payment"],
+        "notes": "Brak natywnego modułu subskrypcji — wymaga własnej implementacji"
+      },
+      {
+        "id": "payments-invoice",
+        "name": "Invoice / Pay by Terms",
+        "useCases": ["b2b"],
+        "status": "buildable",
+        "resourceIds": ["payment"],
+        "notes": "Typowy scenariusz B2B — płatność przelewem po terminie"
+      }
+    ]
+  },
+  {
+    "id": "customers",
+    "name": "Customers",
+    "useCases": ["b2c", "b2b"],
+    "description": "Konta, autoryzacja, segmentacja",
+    "children": [
+      {
+        "id": "customers-accounts",
+        "name": "Customer Accounts",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["customer"]
+      },
+      {
+        "id": "customers-auth",
+        "name": "Authentication",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["auth"],
+        "children": [
+          {
+            "id": "customers-auth-google",
+            "name": "Google OAuth",
+            "useCases": ["b2c", "b2b"],
+            "status": "plugin",
+            "resourceIds": ["google"]
+          },
+          {
+            "id": "customers-auth-github",
+            "name": "GitHub OAuth",
+            "useCases": ["b2b"],
+            "status": "plugin",
+            "resourceIds": ["github"]
+          },
+          {
+            "id": "customers-auth-okta",
+            "name": "Okta / SSO",
+            "useCases": ["b2b"],
+            "status": "plugin",
+            "resourceIds": ["okta"]
+          }
+        ]
+      },
+      {
+        "id": "customers-groups",
+        "name": "Customer Groups",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["customer"]
+      },
+      {
+        "id": "customers-company-accounts",
+        "name": "Company Accounts",
+        "useCases": ["b2b"],
+        "status": "missing",
+        "resourceIds": [],
+        "notes": "Brak natywnego wsparcia dla struktur firmowych (firma → pracownicy → role)"
+      },
+      {
+        "id": "customers-approval-flows",
+        "name": "Approval Flows",
+        "useCases": ["b2b"],
+        "status": "missing",
+        "resourceIds": [],
+        "notes": "Zatwierdzanie zamówień przez managera — brak wsparcia"
+      }
+    ]
+  },
+  {
+    "id": "orders",
+    "name": "Orders",
+    "useCases": ["b2c", "b2b"],
+    "description": "Zarządzanie zamówieniami",
+    "children": [
+      {
+        "id": "orders-management",
+        "name": "Order Management",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["order"]
+      },
+      {
+        "id": "orders-returns",
+        "name": "Returns & Refunds",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["order"]
+      },
+      {
+        "id": "orders-exchanges",
+        "name": "Exchanges",
+        "useCases": ["b2c"],
+        "status": "ready",
+        "resourceIds": ["order"]
+      },
+      {
+        "id": "orders-quotes",
+        "name": "Quote Management",
+        "useCases": ["b2b"],
+        "status": "missing",
+        "resourceIds": [],
+        "notes": "Ofertowanie B2B — brak natywnego wsparcia"
+      },
+      {
+        "id": "orders-bulk",
+        "name": "Bulk Orders",
+        "useCases": ["b2b"],
+        "status": "buildable",
+        "resourceIds": ["order"],
+        "notes": "Możliwe przez API, wymaga własnego UI i logiki"
+      }
+    ]
+  },
+  {
+    "id": "fulfillment",
+    "name": "Fulfillment",
+    "useCases": ["b2c", "b2b"],
+    "description": "Wysyłka i realizacja zamówień",
+    "children": [
+      {
+        "id": "fulfillment-shipping",
+        "name": "Shipping",
+        "useCases": ["b2c", "b2b"],
+        "status": "ready",
+        "resourceIds": ["fulfillment"]
+      },
+      {
+        "id": "fulfillment-shipstation",
+        "name": "ShipStation",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["shipstation"]
+      },
+      {
+        "id": "fulfillment-dropshipping",
+        "name": "Dropshipping",
+        "useCases": ["b2c"],
+        "status": "buildable",
+        "resourceIds": ["fulfillment"],
+        "notes": "Wymaga własnej integracji z dostawcą dropshipping"
+      }
+    ]
+  },
+  {
+    "id": "search",
+    "name": "Search & Discovery",
+    "useCases": ["b2c", "b2b"],
+    "description": "Wyszukiwanie i rekomendacje",
+    "children": [
+      {
+        "id": "search-algolia",
+        "name": "Algolia",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["algolia"]
+      },
+      {
+        "id": "search-meilisearch",
+        "name": "Meilisearch",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["meilisearch"]
+      },
+      {
+        "id": "search-filters",
+        "name": "Faceted Filters",
+        "useCases": ["b2c", "b2b"],
+        "status": "buildable",
+        "resourceIds": [],
+        "notes": "Wymaga integracji z silnikiem wyszukiwania"
+      }
+    ]
+  },
+  {
+    "id": "content",
+    "name": "Content",
+    "useCases": ["b2c", "b2b"],
+    "description": "CMS i zarządzanie treścią",
+    "children": [
+      {
+        "id": "content-contentful",
+        "name": "Contentful",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["contentful"]
+      },
+      {
+        "id": "content-sanity",
+        "name": "Sanity",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["sanity"]
+      },
+      {
+        "id": "content-payload",
+        "name": "Payload CMS",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["payload"]
+      },
+      {
+        "id": "content-media",
+        "name": "Media / File Storage",
+        "useCases": ["b2c", "b2b"],
+        "status": "configurable",
+        "resourceIds": ["s3"],
+        "children": [
+          {
+            "id": "content-media-s3",
+            "name": "AWS S3",
+            "useCases": ["b2c", "b2b"],
+            "status": "plugin",
+            "resourceIds": ["s3"]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "notifications",
+    "name": "Notifications",
+    "useCases": ["b2c", "b2b"],
+    "description": "Email, SMS, powiadomienia",
+    "children": [
+      {
+        "id": "notifications-sendgrid",
+        "name": "SendGrid",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["sendgrid"]
+      },
+      {
+        "id": "notifications-resend",
+        "name": "Resend",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["resend"]
+      },
+      {
+        "id": "notifications-sms",
+        "name": "SMS (Twilio)",
+        "useCases": ["b2c"],
+        "status": "plugin",
+        "resourceIds": ["twilio-sms"]
+      },
+      {
+        "id": "notifications-slack",
+        "name": "Slack",
+        "useCases": ["b2b"],
+        "status": "plugin",
+        "resourceIds": ["slack"]
+      }
+    ]
+  },
+  {
+    "id": "analytics",
+    "name": "Analytics",
+    "useCases": ["b2c", "b2b"],
+    "description": "Śledzenie zdarzeń i zachowań",
+    "children": [
+      {
+        "id": "analytics-posthog",
+        "name": "PostHog",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["posthog"]
+      },
+      {
+        "id": "analytics-segment",
+        "name": "Segment",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["segment"]
+      }
+    ]
+  },
+  {
+    "id": "infrastructure",
+    "name": "Infrastructure",
+    "useCases": ["b2c", "b2b"],
+    "description": "Monitoring, deployment, wydajność",
+    "children": [
+      {
+        "id": "infrastructure-sentry",
+        "name": "Sentry",
+        "useCases": ["b2c", "b2b"],
+        "status": "plugin",
+        "resourceIds": ["sentry"]
+      },
+      {
+        "id": "infrastructure-deployment",
+        "name": "Deployment",
+        "useCases": ["b2c", "b2b"],
+        "status": "configurable",
+        "resourceIds": [],
+        "notes": "Medusa wspiera Railway, Render, AWS, GCP, DigitalOcean"
+      }
+    ]
+  },
+  {
+    "id": "b2b-specific",
+    "name": "B2B Specific",
+    "useCases": ["b2b"],
+    "description": "Funkcje dedykowane dla B2B",
+    "children": [
+      {
+        "id": "b2b-company-accounts",
+        "name": "Company Accounts",
+        "useCases": ["b2b"],
+        "status": "missing",
+        "resourceIds": [],
+        "notes": "Struktura firma → oddziały → pracownicy z rolami"
+      },
+      {
+        "id": "b2b-quotes",
+        "name": "Quote Management",
+        "useCases": ["b2b"],
+        "status": "missing",
+        "resourceIds": [],
+        "notes": "Ofertowanie, negocjacje cen"
+      },
+      {
+        "id": "b2b-approval-flows",
+        "name": "Approval Flows",
+        "useCases": ["b2b"],
+        "status": "missing",
+        "resourceIds": [],
+        "notes": "Zatwierdzanie zamówień przez przełożonego"
+      },
+      {
+        "id": "b2b-credit-limit",
+        "name": "Credit Limit",
+        "useCases": ["b2b"],
+        "status": "buildable",
+        "resourceIds": ["customer"],
+        "notes": "Limit kredytowy na firmę — wymaga własnej logiki"
+      },
+      {
+        "id": "b2b-contract-pricing",
+        "name": "Contract Pricing",
+        "useCases": ["b2b"],
+        "status": "buildable",
+        "resourceIds": ["pricing"],
+        "notes": "Indywidualne cenniki negocjowane per firma"
+      },
+      {
+        "id": "b2b-erp",
+        "name": "ERP Integration",
+        "useCases": ["b2b"],
+        "status": "buildable",
+        "resourceIds": ["odoo"],
+        "notes": "Medusa ma guide dla Odoo, pozostałe ERP wymagają własnej implementacji"
+      }
+    ]
+  }
+]
