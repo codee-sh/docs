@@ -1,0 +1,11 @@
+/* Hide Nextra sidebar and TOC on wizard pages */
+.wizard-layout ~ aside,
+.nextra-sidebar-container,
+.nextra-toc {
+  display: none !important;
+}
+
+/* Make content full width */
+.wizard-layout {
+  width: 100%;
+}
