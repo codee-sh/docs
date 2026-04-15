@@ -1,0 +1,69 @@
+---
+title: Get started
+sidebarTitle: Get started
+---
+
+# Reorder
+
+Open-source subscription management plugin for Medusa V2 — billing cycles, automated renewals, dunning, retention flows, and analytics, all from the Medusa Admin.
+
+| Field | Details |
+|-------|---------|
+| **Status** | Stable |
+| **Repository** | [github.com/reorder-js/reorder](https://github.com/reorder-js/reorder) |
+| **Version** | <StarterVersion repo="reorder-js/reorder" fallback="1.0.3" /> |
+| **Author** | [Reorder](https://github.com/reorder-js) |
+
+## Features
+
+- **Subscriptions** — Full lifecycle management: create, pause, resume, cancel, and schedule plan changes from the Medusa Admin
+- **Plans & Offers** — Configure subscription frequencies, per-frequency discounts, trial periods, and minimum cycle rules per product or variant
+- **Renewals** — Scheduler-backed automatic renewals with manual override, optional approval flows, and full attempt history
+- **Dunning** — Automatic payment retry scheduling with configurable intervals, manual retry actions, and permanent vs. temporary failure classification
+- **Cancellation & Retention** — Structured cancellation flows with retention offers (pause, discount, bonus) before finalizing churn
+- **Analytics** — MRR, churn rate, LTV, and active subscription KPIs with filterable trend charts and CSV export
+- **Activity Log** — Append-only audit trail covering all subscription lifecycle events across every domain
+- **Order Details Widget** — Subscription context surfaced directly in the Medusa Admin order details sidebar
+
+## Compatibility
+
+- **Medusa Version**: `2.12.4`
+- **Node Version**: `>= 20`
+
+## Installation
+
+### 1. Install the package
+
+```bash
+npm install @reorderjs/reorder
+# or
+yarn add @reorderjs/reorder
+```
+
+### 2. Register the plugin
+
+Add to your `medusa-config.ts`:
+
+```typescript
+module.exports = defineConfig({
+  plugins: [
+    "@reorderjs/reorder",
+  ],
+})
+```
+
+### 3. Run migrations
+
+```bash
+npx medusa db:migrate
+```
+
+## Links
+
+- [Documentation](https://docs.reorderjs.com)
+- [GitHub Repository](https://github.com/reorder-js/reorder)
+- [npm package](https://www.npmjs.com/package/@reorderjs/reorder)
+
+## License
+
+MIT
