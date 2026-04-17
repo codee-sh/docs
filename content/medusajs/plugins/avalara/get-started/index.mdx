@@ -1,0 +1,138 @@
+---
+title: Get started
+sidebarTitle: Get started
+---
+
+# Avalara
+
+Official Avalara-certified tax automation plugin for Medusa — real-time tax calculations, order transaction management, and address validation powered by AvaTax API.
+
+| Field          | Details                                                                          |
+| -------------- | -------------------------------------------------------------------------------- |
+| **Status**     | Stable                                                                           |
+| **Repository** | [github.com/u11d-com/medusa-avalara](https://github.com/u11d-com/medusa-avalara) |
+| **Version**    | <StarterVersion repo="u11d-com/medusa-avalara" fallback="0.2.2" />               |
+| **Author**     | [u11d](https://u11d.com/)                                                        |
+| **Certified**  | Official Avalara-certified solution                                              |
+
+## Features
+
+- **Real-time Tax Calculations** — Automatically calculate accurate taxes during checkout using Avalara's AvaTax API
+- **Order Transaction Management** — Create AvaTax transactions when orders are placed for proper tax recording
+- **Transaction Lifecycle Tracking** — Commit transactions when orders are completed/fulfilled and void transactions when orders are canceled
+- **Address Validation** — Validate and standardize shipping addresses using Avalara's address validation service
+- **Flexible Configuration** — Support for custom tax codes, exemptions (entity use code), and shipping addresses
+- **Customer Tax Exemptions** — Manage tax-exempt customers using Avalara's Entity Use Codes for government entities, non-profits, and resellers
+- **Product-Specific Tax Codes** — Assign different Avalara tax codes to individual products based on category, material, or intended use
+- **Tax-Inclusive Pricing** — Full support for tax-inclusive pricing with automatic region preference detection
+
+## Compatibility
+
+- **Medusa Version**: `>= 2.8.8`
+- **Node Version**: `>= 20`
+- **Certified Solution**: Official Avalara-certified integration
+
+## Installation
+
+### 1. Install the package
+
+```bash
+npm install @u11d/medusa-avalara
+# or
+yarn add @u11d/medusa-avalara
+```
+
+### 2. Register the plugin
+
+Add to your `medusa-config.ts` using the `withAvalaraPlugin` helper:
+
+```typescript
+import { defineConfig } from "@medusajs/framework/utils";
+import { withAvalaraPlugin, AvalaraPluginOptions } from "@u11d/medusa-avalara";
+
+const avalaraPluginOptions: AvalaraPluginOptions = {
+  accountId: 0, // Your Avalara account ID
+  licenseKey: "YOUR_LICENSE_KEY",
+  environment: "sandbox",
+  companyId: 0, // Your Avalara company ID
+  companyCode: "DEFAULT",
+  defaultTaxCode: "PC040100", // Clothing and related products
+};
+
+module.exports = defineConfig(
+  withAvalaraPlugin(
+    {
+      projectConfig: {
+        // your project config
+      },
+      plugins: [
+        // other plugins
+      ],
+      modules: [
+        // your modules
+      ],
+    },
+    avalaraPluginOptions,
+  ),
+);
+```
+
+### 3. Run database migration
+
+```bash
+npx medusa db:migrate
+```
+
+### 4. Enable AvaTax Provider
+
+After starting your Medusa server:
+
+1. Go to your admin panel (locally available at `http://localhost:9000/app` by default)
+2. Navigate to Settings > Tax Regions
+3. Select a tax region and edit it
+4. Select Avalara as your tax provider
+5. Save the configuration
+
+## Configuration Options
+
+Access your Avalara dashboard to obtain the required credentials:
+
+- Production: [https://admin.avalara.com/](https://admin.avalara.com/)
+- Sandbox: [https://sandbox.admin.avalara.com/](https://sandbox.admin.avalara.com/)
+
+| Option                   | Type                      | Required | Default    | Description                                             |
+| ------------------------ | ------------------------- | -------- | ---------- | ------------------------------------------------------- |
+| accountId                | number                    | ✅       | -          | Your Avalara account ID                                 |
+| licenseKey               | string                    | ✅       | -          | Your Avalara license key                                |
+| environment              | "sandbox" \| "production" | ✅       | -          | AvaTax environment                                      |
+| companyCode              | string                    | ✅       | -          | Your company code in AvaTax                             |
+| companyId                | number                    | ✅       | -          | Your Avalara company ID                                 |
+| documentRecordingEnabled | boolean                   | ❌       | true       | Controls whether documents should be recorded in AvaTax |
+| defaultTaxCode           | string                    | ❌       | -          | Default tax code for products                           |
+| shippingTaxCode          | string                    | ❌       | "FR020100" | Tax code for shipping                                   |
+
+## Advanced Features
+
+### Product-Specific Tax Codes
+
+Assign specific Avalara tax codes to individual products via the admin API endpoint `/admin/avalara-products`. Find the complete list of available tax codes at [https://taxcode.avatax.avalara.com/](https://taxcode.avatax.avalara.com/).
+
+### Customer Tax Exemptions
+
+Manage tax-exempt customers using Entity Use Codes through the `/admin/avalara-customers` endpoint. Supports government entities, non-profit organizations, resellers, and other exempt customer types.
+
+### Address Validation
+
+Validate and standardize US and Canadian addresses using the `/store/avalara-address` endpoint, which proxies to Avalara's ResolveAddressPost API for accurate tax jurisdiction determination.
+
+## Links
+
+- [GitHub Repository](https://github.com/u11d-com/medusa-avalara)
+- [npm package](https://www.npmjs.com/package/@u11d/medusa-avalara)
+- [Blog article](https://u11d.com/blog/automated-tax-calculations-medusa-avalara-integration)
+- [Contributing Guide](https://github.com/u11d-com/medusa-avalara/blob/main/CONTRIBUTING.md)
+- [Contact u11d](https://u11d.com/contact/)
+
+## License
+
+MIT
