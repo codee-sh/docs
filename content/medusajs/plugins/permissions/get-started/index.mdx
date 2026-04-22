@@ -96,7 +96,7 @@ export default defineMiddlewares({
 });
 ```
 
-> [!IMPORTANT]
+**Important notice:**
 > Please note that defining the middlewares before assigning a role to an admin user will effectively lock you out of the system, as no permissions will be granted to any user. In order to resolve this issue:
 > 
 > Configure the module with the actor providers and permissions, start the application, create a role allowing all permissions to an admin user, and only then add the middlewares to the project. 
