@@ -3,46 +3,44 @@ title: Get started
 sidebarTitle: Get started
 ---
 
-<br />
-
-<center>
 # medusa-permissions
-[MedusaJS](https://docs.medusajs.com) | [npm](https://www.npmjs.com/package/medusa-permissions) | [Repository](https://github.com/medusajs/medusa-permissions)
 
-</center>
+Authorization plugin for Medusa admin and custom module APIs with RBAC plus context-aware policy controls.
 
+| Field | Details |
+|-------|---------|
+| **Status** | In Review |
+| **Repository** | [github.com/tax1driver/medusa-permissions](https://github.com/tax1driver/medusa-permissions) |
+| **Version** | <StarterVersion repo="tax1driver/medusa-permissions" fallback="1.0.2" /> |
+| **Author** | [tax1driver](https://github.com/tax1driver) |
 
+## Features
 
-<br />
+- **RBAC + Context-Aware Policies** — Resolve actors to roles and enforce `allow` / `deny` rules with runtime parameter scoping
+- **Hierarchical Permission Matching** — Support wildcard fallback candidates such as `admin.orders.update` -> `admin.orders.*` -> `admin.*` -> `*`
+- **Field-Level Control** — Enforce query/mutation restrictions, including partial field filtering
+- **Audit Logging** — Track permission decisions with matched rule/role and resolved context
+- **Extensible Architecture** — Add custom permission definitions, actor resolvers, context resolvers, and middleware flows
 
-## Abstract
+## Compatibility
 
-The Permissions module secures admin and custom module APIs with an RBAC model extended by ABAC-like context-aware parameters.
-It does so by using a flexible architecture that lets developers extend authorization behavior via permission definitions, actor resolvers, context resolvers, workflow-based evaluation, and middleware enforcement with audit logging.
-
-## Overview
-
-The Permissions module provides authorization for admin and custom module APIs using an `RBAC + context-aware policy` model.
-
-At its core, actors (for example, `user` or `customer`) are resolved to roles, and roles contain permission rules (`allow` / `deny`) for permission keys such as `admin.orders.list` or `admin.permissions.permissions.update`.
-
-The module extends classic RBAC with request-context parameters, allowing rules to be scoped by runtime values (built-in parameters include `resource_id`, `sales_channel_id`, `region_id` among others). 
-
-This enables advanced controls such as hierarchy-safe role administration, field-level query/mutation restrictions, and partial access behavior where denied fields can be filtered from query or mutation requests.
-
-Permission decisions are evaluated through module services and workflow steps, then enforced in API middlewares. The module also records permission validation audit logs, including matched rule/role details and evaluation context, so authorization behavior is traceable and debuggable.
-
-Permission key matching supports hierarchical wildcard candidates (for example, `admin.orders.update` -> `admin.orders.*` -> `admin.*` -> `*`) using suffix wildcards.
+- **Medusa Version**: `>= 2.11.2`
+- **Node Version**: `>= 20`
 
 ## Installation
-```
-npm i medusa-permissions
+
+### 1. Install the package
+
+```bash
+npm install medusa-permissions
 # or
 yarn add medusa-permissions
 ```
 
-## Configuration
+### 2. Register the plugin and module
+
 Add the plugin and module definition to `medusa-config.ts`:
+
 ```ts
 module.exports = {
   /* ... */
@@ -72,15 +70,20 @@ module.exports = {
   ]
 }
 ```
-The above snippet registers the Permissions module with a set of predefined admin permissions and two actor providers for `user` and `customer` actors. You can customize the permissions and actors as needed by providing your own definitions.
 
-Run migrations afterwards to create the necessary database tables:
-```
+The above snippet registers the Permissions module with predefined admin permissions and actor providers for `user` and `customer`. You can swap these with your own implementations.
+
+### 3. Run migrations
+
+Run migrations to create the required database tables:
+
+```bash
 npx medusa db:migrate
 ```
 
-### Middlewares
-To enforce permissions on the base Medusa Admin API and Permission Module API routes, add the built-in middlewares to `src/api/middlewares.ts`:
+### 4. Enable permission middlewares
+
+To enforce permissions on base Medusa Admin API and Permissions module routes, add built-in middlewares to `src/api/middlewares.ts`:
 
 ```ts
 import { adminApiPermissionMiddlewares } from "medusa-permissions/middlewares/permissions";
