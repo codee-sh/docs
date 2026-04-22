@@ -3,28 +3,34 @@ title: Get started
 sidebarTitle: Get started
 ---
 
-<br />
-
-<center>
 # medusa-stats
-[MedusaJS](https://docs.medusajs.com) | [npm](https://www.npmjs.com/package/medusa-stats) | [Repository](https://github.com/tax1driver/medusa-stats)
-</center>
 
-<br />
+Flexible statistics and analytics plugin for Medusa with pluggable providers, composable charts, and alerting.
 
+| Field | Details |
+|-------|---------|
+| **Status** | In Review |
+| **Repository** | [github.com/tax1driver/medusa-stats](https://github.com/tax1driver/medusa-stats) |
+| **Version** | <StarterVersion repo="tax1driver/medusa-stats" fallback="1.0.10" /> |
+| **Author** | [tax1driver](https://github.com/tax1driver) |
 
-## Overview
+## Features
 
-`medusa-stats` is a flexible statistics module for Medusa that features:
+- **Pluggable Statistics Providers** — Define and register custom providers for domain-specific metrics
+- **Views and Chart Composition** — Organize metrics into configurable dashboards
+- **Composite Statistics** — Build statistics that depend on other statistic outputs
+- **Alerting System** — Configure threshold/comparative alerts with event emission
+- **Admin Interface** — Manage views, options, and lifecycle operations from Medusa Admin
+- **Caching Support** — Improve performance with cached statistic results
 
-- Pluggable statistics providers
-- Views, options, and chart composition
-- Composite statistics (statistics depending on other statistics)
-- Statistics-triggered configurable alerts
-- UI interface and admin routes for full statistics lifecycle management
-- Caching for optimized performance
+## Compatibility
+
+- **Medusa Version**: `>= v2.11.2`
+- **Node Version**: `>= 20`
 
 ## Installation
+
+### 1. Install the package
 
 ```bash
 npm install medusa-stats
@@ -32,17 +38,15 @@ npm install medusa-stats
 yarn add medusa-stats
 ```
 
+### 2. Register the plugin and module
 
-
-## Configuration
-
-Add the plugin to your `medusa-config.ts`:
+Add the plugin and statistics module to your `medusa-config.ts`:
 
 ```typescript
 modules: [
   {
     resolve: "medusa-stats/modules/statistics",
-    dependencies: [ContainerRegistrationKeys.QUERY], // Query dependency is required in order to be injected into the providers
+    dependencies: [ContainerRegistrationKeys.QUERY], // Query dependency is required for provider injection
     options: {
       providers: [
         {
@@ -53,9 +57,17 @@ modules: [
   },
 ],
 plugins: [
-  `medusa-stats`
+  "medusa-stats"
 ]
 ```
+
+### 3. Configure providers
+
+Start with the built-in `common` provider, then add your own providers as needed. See [Providers](#providers) for examples.
+
+## Overview
+
+`medusa-stats` is a flexible statistics module for Medusa that supports custom metric definitions, chart-oriented organization, composable/stat-transform calculations, and configurable alert workflows.
 
 ## Basic Usage
 The plugin provides a framework for defining and calculating statistics as well as an admin interface for their management and visualization. The primary goal of the module is to provide a flexible way to create custom statistics and views that suit your business needs, without being limited to predefined metrics. 
@@ -307,3 +319,7 @@ featureFlags: {
 - More built-in chart types and visualization options
 - Visualization providers for custom chart types and UI components
 - Visualization on entities' details pages (e.g. product statistics on product page)
+
+
+## License
+MIT
