@@ -1,0 +1,20 @@
+[
+  {
+    "id": "custom-erp",
+    "name": "ERP Integration",
+    "type": "custom",
+    "author": null,
+    "sourceCategory": "ERP",
+    "useCases": ["b2b"],
+    "notes": "Brak oficjalnego wsparcia — wymaga własnej implementacji"
+  },
+  {
+    "id": "custom-b2b-quotes",
+    "name": "Quote Management",
+    "type": "missing",
+    "author": null,
+    "sourceCategory": "Sales",
+    "useCases": ["b2b"],
+    "notes": "Brak natywnego wsparcia dla ofertowania B2B"
+  }
+]
