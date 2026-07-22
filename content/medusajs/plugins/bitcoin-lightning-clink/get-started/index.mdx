@@ -1,0 +1,91 @@
+---
+title: Get started
+sidebarTitle: Get started
+---
+
+# Bitcoin Lightning (CLINK)
+
+Accept Bitcoin Lightning payments for your Medusa store via the CLINK protocol. Self-custodial, instant settlement, with subscription support via nDebit.
+
+| Field | Details |
+|-------|---------|
+| **Status** | In Review |
+| **Repository** | [github.com/WoompaLoompa/medusa-clink](https://github.com/WoompaLoompa/medusa-clink) |
+| **Version** | <StarterVersion repo="WoompaLoompa/medusa-clink" fallback="1.0.0" /> |
+| **Author** | [WoompaLoompa](https://github.com/WoompaLoompa) |
+
+## Features
+
+- **Self-Custodial** — Merchant runs their own Lightning node, no third-party custody
+- **Instant Settlement** — Payments settle in seconds via Lightning Network
+- **No Server Required** — Uses Nostr relays for transport, no web server needed
+- **Auto Currency Conversion** — Real-time rates from CoinGecko, Kraken, Fixed, or Manual
+- **QR Code + Copy** — Both QR code display and one-click copy for invoices
+- **Dual Confirmation** — Webhook (primary) + Polling (backup) for reliable payment detection
+- **Subscriptions** — Recurring payments via nDebit (CLINK Debits)
+- **Privacy-Preserving** — Ephemeral keys for payment requests
+
+## Compatibility
+
+- **Medusa Version**: `>= 2.0.0`
+- **Node Version**: `>= 20`
+- **Lightning Node**: Any CLINK-compatible node (e.g., [Lightning.Pub](https://github.com/nicokosi/lightning-pub))
+
+## Installation
+
+### 1. Install the package
+
+```bash
+npm install medusa-plugin-bitcoin-lightning-via-clink
+# or
+yarn add medusa-plugin-bitcoin-lightning-via-clink
+```
+
+### 2. Register the plugin
+
+Add to your `medusa-config.ts`:
+
+```typescript
+module.exports = defineConfig({
+  plugins: [
+    {
+      resolve: "medusa-plugin-bitcoin-lightning-via-clink",
+      id: "clink",
+      options: {
+        noffer: "noffer1...",  // Your CLINK offer string
+        currencySource: "coingecko",  // or "kraken", "fixed", "manual"
+      },
+    },
+  ],
+})
+```
+
+### 3. Configure
+
+1. Go to **Settings > Regions** in your Medusa admin
+2. Enable **Lightning (CLINK)** as a payment provider
+3. Set your `noffer` string (found in your CLINK-compatible wallet)
+
+## Configuration Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `noffer` | `string` | required | Your CLINK offer string (`noffer1...`) |
+| `currencySource` | `string` | `"coingecko"` | Exchange rate provider: `coingecko`, `kraken`, `fixed`, `manual` |
+| `fixedRate` | `number` | `null` | Fixed exchange rate (satoshis per unit) when using `fixed` source |
+| `enableSubscriptions` | `boolean` | `false` | Enable subscription support via nDebit |
+
+## Links
+
+- [GitHub Repository](https://github.com/WoompaLoompa/medusa-clink)
+- [npm package](https://www.npmjs.com/package/medusa-plugin-bitcoin-lightning-via-clink)
+- [Wiki & Documentation](https://github.com/WoompaLoompa/medusa-clink/wiki)
+
+## License
+
+GPL-3.0
+
+## Links
+
+- [GitHub Repository](https://github.com/WoompaLoompa/medusa-clink)
+- [npm package](https://www.npmjs.com/package/medusa-plugin-bitcoin-lightning-via-clink)
