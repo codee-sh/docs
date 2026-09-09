@@ -1,0 +1,164 @@
+---
+title: Fluctum Starter
+sidebarTitle: Fluctum Starter
+asIndexPage: true
+---
+
+# Fluctum Starter
+
+Production-ready Medusa starter for real-time precious metals storefronts — pre-wired with the Fluctum dynamic pricing plugin, live SSE price bar, and price-locked checkout.
+
+| Field          | Details                                                                            |
+| -------------- | ---------------------------------------------------------------------------------- |
+| **Status**     | In Review                                                                          |
+| **Repository** | [github.com/u11d-com/fluctum_starter](https://github.com/u11d-com/fluctum_starter) |
+| **Version**    | <StarterVersion repo="u11d-com/fluctum_starter" fallback="0.1.0" />                |
+| **Author**     | [u11d](https://u11d.com/)                                                          |
+
+## Tech stack
+
+| Layer             | Technology                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Backend           | Medusa v2 with [`@u11d/medusa-dynamic-pricing`](https://www.npmjs.com/package/@u11d/medusa-dynamic-pricing) preconfigured |
+| Storefront        | Next.js 16                                                                                                                |
+| Pricing           | Live SSE price bar, dynamic cart, price-locked checkout                                                                   |
+| Infra (local dev) | Docker Compose — PostgreSQL 17 + Redis 8                                                                                  |
+| Monorepo          | Turbo + pnpm workspaces (`dev` / `build` / `lint` / `test`)                                                               |
+
+## Features
+
+- **Live spot pricing** — prices update every few seconds from a configurable feed (goldapi.io or the built-in random provider for dev)
+- **Real-time delivery** — prices are pushed to every storefront client via a single persistent SSE connection
+- **Price-locked checkout** — the price a buyer sees at checkout entry is locked and validated at order completion
+- **Turbo monorepo** — backend and storefront run together with `pnpm run dev`, or independently for first-run setup
+- **One-click cloud deploy** — deploy straight to Medusa Cloud once pushed to GitHub
+
+## Compatibility
+
+- **Medusa Version**: `v2`
+- **Node Version**: `>= 24`
+- **pnpm Version**: `>= 11` (`corepack enable` picks up the pinned version automatically)
+- **Docker & Docker Compose** for local PostgreSQL + Redis
+
+## Installation
+
+### 1. Use this template
+
+Click [Use this template](https://github.com/u11d-com/fluctum_starter/generate) on GitHub, or clone directly:
+
+```bash
+git clone https://github.com/u11d-com/fluctum_starter.git my-store
+cd my-store
+```
+
+### 2. Install dependencies
+
+```bash
+pnpm install
+```
+
+### 3. Configure environment
+
+```bash
+cp backend/.env.template backend/.env
+cp storefront/.env.template storefront/.env
+```
+
+### Prerequisites
+
+- Node.js v24+
+- pnpm v11+
+- Docker & Docker Compose
+
+### 4. Start infrastructure
+
+```bash
+docker compose up -d
+```
+
+PostgreSQL will be available on port `5432` (database: `fluctum`) and Redis on port `6379`.
+
+### 5. Run migrations (also seeds initial data)
+
+```bash
+pnpm run backend:migrate
+```
+
+### 6. Create admin user
+
+```bash
+pnpm run backend:create-admin
+```
+
+### 7. Start the backend
+
+```bash
+pnpm run backend:dev
+```
+
+| Service     | URL                         |
+| ----------- | --------------------------- |
+| Backend API | `http://localhost:9000`     |
+| Admin panel | `http://localhost:9000/app` |
+
+Log into the admin panel, then copy the **Publishable API key** (Settings → API Keys) into `storefront/.env`:
+
+```
+NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY=pk_...
+```
+
+### 8. Start the storefront
+
+In a separate terminal, with the backend still running:
+
+```bash
+pnpm run storefront:dev
+```
+
+The storefront will be available at `http://localhost:8000`. Once both are confirmed working, use `pnpm run dev` going forward to start backend + storefront together.
+
+## Plugin configuration
+
+The plugin is configured in `backend/medusa-config.ts`:
+
+```typescript
+import { randomProvider, createGoldApiProvider } from "@u11d/medusa-dynamic-pricing";
+
+{
+  resolve: "@u11d/medusa-dynamic-pricing",
+  options: {
+    materials: ["XAU", "XAG"],
+    fetchIntervalSeconds: 10,
+    priceLockDurationSeconds: 600,
+    provider: process.env.GOLD_API_KEY
+      ? createGoldApiProvider({ apiKey: process.env.GOLD_API_KEY })
+      : randomProvider,
+  },
+}
+```
+
+See the [plugin documentation](/medusajs/plugins/fluctum-medusa-dynamic-pricing-plugin/get-started) for all options.
+
+## Deploy to Medusa Cloud
+
+1. Push your repository to GitHub
+2. Go to [cloud.medusajs.com](https://cloud.medusajs.com) and connect your repo
+3. Deploy — Medusa Cloud handles migrations, scaling, and SSL automatically
+
+## Project structure
+
+- `backend/` — Medusa backend preconfigured with the Fluctum dynamic pricing plugin
+- `storefront/` — Next.js 16 storefront with live SSE price bar and price-locked checkout
+- `docker-compose.yml` — local PostgreSQL 17 + Redis 8
+
+## License
+
+MIT
+
+## Links
+
+- [Fluctum website](https://fluctum.io/)
+- [GitHub Repository](https://github.com/u11d-com/fluctum_starter)
+- [Dynamic pricing plugin](https://github.com/u11d-com/fluctum_medusa-dynamic-pricing-plugin)
+- [npm package](https://www.npmjs.com/package/@u11d/medusa-dynamic-pricing)
+- [Contact u11d](https://u11d.com/contact/)

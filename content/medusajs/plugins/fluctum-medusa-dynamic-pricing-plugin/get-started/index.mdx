@@ -1,0 +1,114 @@
+---
+title: Get started
+sidebarTitle: Get started
+---
+
+# Fluctum
+
+Open-source real-time dynamic pricing plugin for Medusa — live spot-price streaming via SSE, configurable pricing rules, and checkout price locks, built for precious metals and any catalog where market prices move constantly.
+
+| Field          | Details                                                                                                                        |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Status**     | In Review                                                                                                                      |
+| **Repository** | [github.com/u11d-com/fluctum_medusa-dynamic-pricing-plugin](https://github.com/u11d-com/fluctum_medusa-dynamic-pricing-plugin) |
+| **Version**    | <StarterVersion repo="u11d-com/fluctum_medusa-dynamic-pricing-plugin" fallback="0.1.2" />                                      |
+| **Author**     | [u11d](https://u11d.com/)                                                                                                      |
+
+## Features
+
+- **Live spot prices** — a scheduled job fetches ask/bid/spot prices from a configurable provider
+- **Real-time delivery** — Server-Sent Events (SSE) push price updates to the storefront and admin panel
+- **Pricing rules** — named rules with spread factor, spread fixed, premium percentage, and premium fixed, assigned per product variant
+- **Per-variant material + weight** — each variant carries a material symbol (`XAU`, `XAG`, …) and weight via a module link
+- **Checkout price locks** — prices are locked when the customer enters checkout and validated at order completion
+- **Admin panel** — config overview, pricing-rule CRUD, live spot-price dashboard, historical prices, and variant/product assignment widgets
+- **Currency conversion** — optional FX conversion rates stored in the database and applied in the pricing formula
+- **Built-in providers** — `randomProvider` (dev/testing), `createGoldApiProvider` (goldapi.io), `createStaticRatesProvider`, and `exchangeRateHostProvider`
+
+## Compatibility
+
+- **Medusa Version**: `2.15.2`
+- **Node Version**: `>= 24`
+
+## Installation
+
+### 1. Install the package
+
+```bash
+npm install @u11d/medusa-dynamic-pricing
+```
+
+### 2. Register the plugin
+
+Add to your `medusa-config.ts`:
+
+```typescript
+import { randomProvider } from "@u11d/medusa-dynamic-pricing";
+
+export default defineConfig({
+  plugins: [
+    {
+      resolve: "@u11d/medusa-dynamic-pricing",
+      options: {
+        materials: ["XAU", "XAG"],
+        fetchIntervalSeconds: 10,
+        priceLockDurationSeconds: 600,
+        provider: randomProvider,
+      },
+    },
+  ],
+});
+```
+
+Swap `randomProvider` for `createGoldApiProvider({ apiKey: process.env.GOLD_API_KEY })` to pull live spot prices from [goldapi.io](https://goldapi.io) in production.
+
+### 3. Run database migration
+
+```bash
+npx medusa db:migrate
+```
+
+## Configuration Options
+
+| Option                     | Type                        | Default  | Description                                                    |
+| -------------------------- | --------------------------- | -------- | -------------------------------------------------------------- |
+| `materials`                | `string[]`                  | required | Material symbols to track, e.g. `["XAU", "XAG"]`               |
+| `fetchIntervalSeconds`     | `number`                    | `10`     | How often to fetch/generate spot prices (1–3600)               |
+| `provider`                 | `PriceProviderFn`           | required | Function that returns spot prices for a list of materials      |
+| `pricingCurrency`          | `string`                    | `"USD"`  | ISO-4217 currency code in which `provider` returns spot prices |
+| `currencyConversion`       | `CurrencyConversionOptions` | `null`   | Optional block enabling multi-currency conversion              |
+| `priceLockDurationSeconds` | `number`                    | `600`    | How long a price lock is valid during checkout                 |
+
+## Pricing Formula
+
+```
+base  = weight_oz × spot_price × spread_factor × currency_conversion
+after_premium = base × (1 + premium_percentage / 100)
+final = after_premium + spread_fixed + premium_fixed
+```
+
+Prices are never written to Medusa's own price tables — the final price is computed from the live spot price and each variant's pricing rule, keeping Medusa's core pricing engine untouched. The `computeFinalPrice` utility is exported from both the main entry point and the `./client` subpath for use in storefronts.
+
+## Store API Routes
+
+All routes are under `/store/dynamic-pricing/`:
+
+| Method | Path                    | Description                                                      |
+| ------ | ----------------------- | ---------------------------------------------------------------- |
+| GET    | `/spot-prices`          | Latest spot prices; optional `?material=` filter                 |
+| GET    | `/sse`                  | SSE stream of live price updates                                 |
+| POST   | `/carts/:id/price-lock` | Lock prices for a cart; `?force=true` always creates fresh locks |
+| GET    | `/variant-pricing`      | Variant pricing details for one or more `?variant_id=` values    |
+| GET    | `/currency-rates`       | Latest FX rates relative to `pricingCurrency`                    |
+
+## Links
+
+- [Fluctum website](https://fluctum.io/)
+- [GitHub Repository](https://github.com/u11d-com/fluctum_medusa-dynamic-pricing-plugin)
+- [npm package](https://www.npmjs.com/package/@u11d/medusa-dynamic-pricing)
+- [Starter (backend + storefront)](https://github.com/u11d-com/fluctum_starter)
+- [Contact u11d](https://u11d.com/contact/)
+
+## License
+
+MIT
